@@ -620,7 +620,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
               <div className="space-y-4">
                 {cart.items?.map((item) => (
                   <CartItem key={item.productId} item={item} />
-                )}
+                ))}
               </div>
             </ScrollArea>
             
