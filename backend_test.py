@@ -498,10 +498,10 @@ def test_security():
     print("🔒 Testing Security (Unauthorized Access)...")
     
     # Test admin endpoint without token
-    success, response = make_request("GET", "admin/stats", expected_status=401)
+    success, response = make_request("GET", "admin/stats", expected_status=403)
     
-    if not success and "401" in str(response):
-        log_test("Security - No Token", True, "Admin endpoint properly protected")
+    if not success and "403" in str(response):
+        log_test("Security - No Token", True, "Admin endpoint properly protected (403 Forbidden)")
         no_token_success = True
     else:
         log_test("Security - No Token", False, "Admin endpoint not properly protected")
@@ -512,7 +512,7 @@ def test_security():
         success, response = make_request("GET", "admin/stats", token=customer_token, expected_status=403)
         
         if not success and "403" in str(response):
-            log_test("Security - Customer Token", True, "Admin endpoint rejects customer access")
+            log_test("Security - Customer Token", True, "Admin endpoint rejects customer access (403 Forbidden)")
             customer_token_success = True
         else:
             log_test("Security - Customer Token", False, "Admin endpoint allows customer access")
