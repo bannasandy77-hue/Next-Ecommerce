@@ -78,9 +78,11 @@ def test_user_registration():
     """Test POST /api/auth/register"""
     print("🔐 Testing User Registration...")
     
-    # Test new user registration
+    # Generate unique email for each test run
+    import time
+    timestamp = int(time.time())
     new_user_data = {
-        "email": "newuser@test.com",
+        "email": f"testuser{timestamp}@test.com",
         "password": "newuser123",
         "name": "New Test User",
         "phone": "+1-555-999-8888",
